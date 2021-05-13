@@ -17,9 +17,9 @@ RUN \
 	&& apk add --no-cache imagemagick imagemagick-dev \
 	&& git clone https://github.com/Imagick/imagick.git /usr/src/php/ext/imagick \
 	&& docker-php-ext-install imagick \
-#\
-#	&& apk add --no-cache freetype-dev libjpeg-turbo-dev libpng libpng-dev libwebp-dev libxpm-dev zlib-dev \
-#	&& docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
-#	&& docker-php-ext-install gd \
+\
+	&& apk add --no-cache freetype-dev libjpeg-turbo-dev libpng libpng-dev libwebp-dev libxpm-dev zlib-dev \
+	&& docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
+	&& docker-php-ext-install gd \
 \
 	&& apk del build-dependencies
