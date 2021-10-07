@@ -12,9 +12,4 @@ RUN \
 	&& docker-php-ext-install pdo_mysql \
 	&& docker-php-ext-install bcmath \
 \
-	&& apk add --no-cache --virtual build-dependencies autoconf build-base pkgconfig \
-	&& apk add --no-cache imagemagick imagemagick-dev \
-	&& pecl install imagick \
-	&& docker-php-ext-enable imagick \
-\
 	&& apk del build-dependencies
