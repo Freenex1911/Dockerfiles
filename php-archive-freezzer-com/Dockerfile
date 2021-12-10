@@ -1,15 +1,8 @@
 FROM php:7-fpm-alpine
 
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+RUN chmod +x /usr/local/bin/install-php-extensions
+
 RUN \
 	mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
-\
-	&& apk update \
-	&& apk add --no-cache --virtual build-dependencies $PHPIZE_DEPS \
-\
-	&& pecl install redis \
-	&& docker-php-ext-enable redis \
-	&& docker-php-ext-install mysqli \
-	&& docker-php-ext-install pdo_mysql \
-	&& docker-php-ext-install bcmath \
-\
-	&& apk del build-dependencies
+	&& install-php-extensions bcmath pdo_mysql
